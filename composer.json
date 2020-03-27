@@ -1,0 +1,9 @@
+{
+  "name": "root/citrus",
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  }
+}

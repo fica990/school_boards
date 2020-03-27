@@ -1,6 +1,8 @@
 <?php
 
-define("DB_NAME", 'test');
-define("DB_HOST", 'my_mysql');
-define("DB_USER", 'root');
-define("DB_PASS", 'root');
+return [
+    'db_name' => 'test',
+    'db_host' => 'my_mysql',
+    'db_user' => 'root',
+    'db_pass' => 'root',
+];

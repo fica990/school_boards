@@ -16,10 +16,12 @@ class DB
     public function __construct()
     {
         if (!isset($this->connection)) {
-            $conn = "mysql:dbname=" . DB_NAME . ";host=" . DB_HOST;
+            $configs = include_once __DIR__ . '/../config/config.php';
+
+            $conn = "mysql:dbname=" . $configs['db_name'] . ";host=" . $configs['db_host'];
 
             try {
-                $this->connection = new PDO($conn, DB_USER, DB_PASS);
+                $this->connection = new PDO($conn, $configs['db_user'], $configs['db_pass']);
             } catch (PDOException $e) {
                 echo $e->getMessage();
                 die;
