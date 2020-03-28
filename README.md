@@ -6,11 +6,11 @@ Get project from https://github.com/fica990/test
 
 Edit /etc/hosts file and add **my-app.com** for **127.0.0.1**
 
-Create **.env** based on **.env.example** 
-
 Navigate to **test/docker**
 
 `cd test/docker`
+
+Create **.env** based on **.env.example** 
 
 Starting docker for first time:
 
