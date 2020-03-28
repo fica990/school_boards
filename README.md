@@ -1,6 +1,6 @@
 # Installation and first start
 
-Get project from https://github.com/fica990/test.git
+Get project from https://github.com/fica990/test
 
 `git clone https://github.com/fica990/test.git`
 
