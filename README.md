@@ -18,11 +18,6 @@ Starting docker for first time:
 
 ---
 
-Run command:
-
-`docker exec my_php composer dump-autoload --working-dir=/var/www/my-app`
-
-
 SSH to docker: (optional)
 
 * `docker ps` (find your docker container name -> last column NAMES)
