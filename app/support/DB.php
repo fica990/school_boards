@@ -3,31 +3,49 @@
 
 namespace App\Support;
 
+use Exception;
 use PDO;
 use PDOException;
 
 class DB
 {
-    protected $connection;
+    private static $instance = null;
+    private $conn;
 
     /**
      * DB constructor.
      */
-    public function __construct()
+    private function __construct()
     {
-        if (!isset($this->connection)) {
-            $configs = include_once __DIR__ . '/../config/config.php';
-
+        try {
+            $configs = include __DIR__ . '/../config/config.php';
             $conn = "mysql:dbname=" . $configs['db_name'] . ";host=" . $configs['db_host'];
 
-            try {
-                $this->connection = new PDO($conn, $configs['db_user'], $configs['db_pass']);
-            } catch (PDOException $e) {
-                echo $e->getMessage();
-                die;
-            }
+            $this->conn = new PDO($conn, $configs['db_user'], $configs['db_pass']);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function __clone()
+    {
+        throw new Exception("Can't clone db instance");
+    }
+
+    public static function getInstance()
+    {
+        if (!static::$instance) {
+            static::$instance = new self();
         }
 
-        return $this->connection;
+        return static::$instance;
+    }
+
+    public function getConnection(): ?PDO
+    {
+        return $this->conn;
     }
 }

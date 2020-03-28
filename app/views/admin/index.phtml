@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<title>Catalog</title>
+<title>Admin panel</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
-<link rel="stylesheet" href="/public/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/style.css">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="/public/assets/js/products.js"></script>
+<script src="/assets/js/admin.js"></script>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/products">Home</a>
@@ -19,27 +19,38 @@
     <div class="content_page text-center">
         <h2>Manage comments</h2>
         <div class="comments_div_admin">
-            <?php foreach ($comments as $comment): ?>
-                <table class="table table-striped" id="comments_table_admin">
-                    <tr>
-                        <th>title</th>
-                        <th>email</th>
-                        <th class="text">text</th>
-                        <th>action</th>
-                    </tr>
-                    <tr>
-                        <td><?php echo $comment['title'] ?></td>
-                        <td><?php echo $comment['email'] ?></td>
-                        <td><?php echo $comment['text'] ?></td>
-                        <td>
-                            <input type="checkbox" class="comment_status"
-                                   data-comment_id="<?php echo $comment['id'] ?>" name="comment_status"
-                                <?php echo($comment['status'] ? 'checked' : '') ?>>
-                        </td>
-                    </tr>
-                </table>
-                <br>
-            <?php endforeach; ?>
+            <?php
+            if (!empty($comments)):
+                foreach ($comments as $comment): ?>
+                    <table class="table table-striped" id="comments_table_admin">
+                        <tr>
+                            <th>title</th>
+                            <th>email</th>
+                            <th class="text">text</th>
+                            <th>action</th>
+                        </tr>
+                        <tr>
+                            <td><?php echo $comment['title'] ?></td>
+                            <td><?php echo $comment['email'] ?></td>
+                            <td><?php echo $comment['text'] ?></td>
+                            <td>
+                                <input type="checkbox" class="comment_status"
+                                       data-comment_id="<?php echo $comment['id'] ?>" name="comment_status"
+                                    <?php echo($comment['status'] ? 'checked' : '') ?>>
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                <?php endforeach;
+            else:
+                echo 'no comments';
+            endif;
+            ?>
+        </div>
+        <div id="message_div" class="col-md-4 mx-auto">
+            <div class="alert" role="alert"></div>
         </div>
     </div>
 </div>
+
+<div class="footer"></div>

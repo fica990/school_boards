@@ -6,16 +6,24 @@ namespace App\Support;
 
 class Validation
 {
+    protected static $errorMessages;
+
     public static function checkIfParamsNotEmpty(array $data)
     {
-        $errors = [];
+        $status = true;
 
         foreach ($data as $fieldName => $item) {
             if (empty($item)) {
-                $errors[] = $fieldName . ' is empty';
+                $status = false;
+                static::$errorMessages[] = $fieldName . ' is empty';
             }
         }
 
-        return $errors;
+        return $status;
+    }
+
+    public static function getErrorMessages()
+    {
+        return static::$errorMessages;
     }
 }

@@ -11,24 +11,29 @@ class CommentsController extends BaseController
     public function save()
     {
         $data = $_POST;
+        $status = true;
 
-        $valid = Validation::checkIfParamsNotEmpty($data);
-        
-        var_dump($valid); die;
+        $isValid = Validation::checkIfParamsNotEmpty($data);
 
-        $status = false;
+        if (!$isValid) {
+            $errorMessages = Validation::getErrorMessages();
+            $status = false;
+
+            echo json_encode(['status' => $status, 'message' => $errorMessages]);
+            die;
+        }
 
         $tblComment = new Comment();
         $saved = $tblComment->saveComment($data);
 
         if ($saved) {
-            $status = true;
-            $responseMessage = 'saved!';
+            $responseMessage = 'comment added';
         } else {
-            $responseMessage = 'error!';
+            $status = false;
+            $responseMessage = 'error saving comment';
         }
 
-        return json_encode(['status' => $status, 'message' => $responseMessage]);
+        echo json_encode(['status' => $status, 'message' => $responseMessage]);
     }
 
     public function toggleStatus()
@@ -36,19 +41,18 @@ class CommentsController extends BaseController
         $data = $_POST;
 
         $data['value'] = ($data['value'] === 'true') ? 1 : 0;
-
-        $status = false;
+        $status = true;
 
         $tblComment = new Comment();
         $updated = $tblComment->toggleComment($data);
 
         if ($updated) {
-            $status = true;
-            $responseMessage = 'updated!';
+            $responseMessage = 'comment status updated!';
         } else {
-            $responseMessage = 'error!';
+            $status = false;
+            $responseMessage = 'error updating comment';
         }
 
-        return json_encode(['status' => $status, 'message' => $responseMessage]);
+        echo json_encode(['status' => $status, 'message' => $responseMessage]);
     }
 }

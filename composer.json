@@ -1,9 +1,15 @@
 {
-  "name": "root/citrus",
-  "require": {},
+  "name": "root/my-app",
+  "require": {
+    "ext-json": "*",
+    "ext-pdo": "*"
+  },
   "autoload": {
     "psr-4": {
       "App\\": "app/"
-    }
+    },
+    "classmap": [
+      "app/"
+    ]
   }
 }
