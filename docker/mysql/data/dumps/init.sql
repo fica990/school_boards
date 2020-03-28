@@ -68,7 +68,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,'title','/public/assets/img/','product_1.jpg','desc text desc text desc text 1'),(2,'title_2','/public/assets/img/','product_2.jpg','desc text desc text desc text 2'),(3,'title_3','/public/assets/img/','product_3.jpg','desc text desc text desc text 3'),(4,'title_4','/public/assets/img/','product_4.jpg','desc text desc text desc text 4'),(5,'title_5','/public/assets/img/','product_5.jpg','desc text desc text desc text 5'),(6,'title_6','/public/assets/img/','product_6.jpg','desc text desc text desc text 6'),(7,'title_7','/public/assets/img/','product_7.jpg','desc text desc text desc text 7'),(8,'title_8','/public/assets/img/','product_8.jpg','desc text desc text desc text 8'),(9,'title_9','/public/assets/img/','product_9.jpg','desc text desc text desc text 9');
+INSERT INTO `products` VALUES (1,'title','/assets/img/','product_1.jpg','desc text desc text desc text 1'),(2,'title_2','/assets/img/','product_2.jpg','desc text desc text desc text 2'),(3,'title_3','/assets/img/','product_3.jpg','desc text desc text desc text 3'),(4,'title_4','/assets/img/','product_4.jpg','desc text desc text desc text 4'),(5,'title_5','/assets/img/','product_5.jpg','desc text desc text desc text 5'),(6,'title_6','/assets/img/','product_6.jpg','desc text desc text desc text 6'),(7,'title_7','/assets/img/','product_7.jpg','desc text desc text desc text 7'),(8,'title_8','/assets/img/','product_8.jpg','desc text desc text desc text 8'),(9,'title_9','/assets/img/','product_9.jpg','desc text desc text desc text 9');
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
