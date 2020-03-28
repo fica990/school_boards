@@ -9,18 +9,18 @@ use PDO;
 class Product
 {
     /**
-     * @var $connection DB
+     * @var DB
      */
-    private $connection;
+    private $db;
 
     public function __construct()
     {
-        $this->connection = DB::getInstance();
+        $this->db = DB::getInstance();
     }
 
-    public function allProducts()
+    public function allProducts(): array
     {
-        $stmt = $this->connection->getConnection()->prepare("SELECT * FROM products");
+        $stmt = $this->db->getConnection()->prepare("SELECT * FROM products");
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

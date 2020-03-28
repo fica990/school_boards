@@ -9,21 +9,21 @@ use PDO;
 class Comment
 {
     /**
-     * @var $connection DB
+     * @var DB
      */
-    private $connection;
+    private $db;
 
     public function __construct()
     {
-        $this->connection = DB::getInstance();
+        $this->db = DB::getInstance();
     }
 
     public function allComments($activeOnly = false): array
     {
         if ($activeOnly) {
-            $stmt = $this->connection->getConnection()->prepare("SELECT * FROM comments WHERE status = 1 ORDER BY date_created DESC");
+            $stmt = $this->db->getConnection()->prepare("SELECT * FROM comments WHERE status = 1 ORDER BY date_created DESC");
         } else {
-            $stmt = $this->connection->getConnection()->prepare("SELECT * FROM comments ORDER BY date_created DESC");
+            $stmt = $this->db->getConnection()->prepare("SELECT * FROM comments ORDER BY date_created DESC");
         }
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -31,7 +31,7 @@ class Comment
 
     public function saveComment(array $data): bool
     {
-        $stmt = $this->connection->getConnection()->prepare("INSERT INTO comments (title, email, text) VALUES (:title, :email, :text)");
+        $stmt = $this->db->getConnection()->prepare("INSERT INTO comments (title, email, text) VALUES (:title, :email, :text)");
 
         $stmt->bindParam(':title', $data['title']);
         $stmt->bindParam(':email', $data['email']);
@@ -42,7 +42,7 @@ class Comment
 
     public function toggleComment(array $data): bool
     {
-        $stmt = $this->connection->getConnection()->prepare("UPDATE comments SET status = :status WHERE id = :comment_id");
+        $stmt = $this->db->getConnection()->prepare("UPDATE comments SET status = :status WHERE id = :comment_id");
 
         $stmt->bindParam(':status', $data['value']);
         $stmt->bindParam(':comment_id', $data['comment_id']);
