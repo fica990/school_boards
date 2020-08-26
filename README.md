@@ -1,14 +1,14 @@
 # Installation and first start
 
-Get project from https://github.com/fica990/test
+Get project from https://github.com/fica990/school_boards.git
 
-`git clone https://github.com/fica990/test.git`
+`git clone https://github.com/fica990/school_boards.git`
 
 Edit /etc/hosts file and add **my-app.com** for **127.0.0.1**
 
-Navigate to **test/docker**
+Navigate to **school_boards/docker**
 
-`cd test/docker`
+`cd school_boards/docker`
 
 Create **.env** based on **.env.example** 
 
