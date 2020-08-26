@@ -7,6 +7,7 @@ class Route
 {
     private $controller;
     private $action;
+    private $params;
 
     /**
      * Route constructor.
@@ -18,11 +19,16 @@ class Route
         $this->action = $routeData[1];
     }
 
+    public function setParams($params)
+    {
+        $this->params = $params;
+    }
+
     public function call()
     {
         $namespace = 'App\\Controllers\\' . $this->controller;
         $controller = new $namespace();
-        $controller->{$this->action}();
+        $controller->{$this->action}($this->params);
     }
 
 

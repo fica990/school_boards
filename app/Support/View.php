@@ -25,7 +25,7 @@ class View
 
     private static function getFile($view)
     {
-        $file = __DIR__ . '/../views/' . str_replace('.', '/', $view) . '.phtml';
+        $file = __DIR__ . '/../Views/' . str_replace('.', '/', $view) . '.phtml';
         if (file_exists($file)) {
             return $file;
         }

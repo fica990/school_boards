@@ -7,9 +7,14 @@ use App\Support\Route;
 
 $requestRoute = trim($_SERVER["REQUEST_URI"], '/');
 
-if (isset($routes[$requestRoute])) {
-    $route = new Route($routes[$requestRoute]);
-    $route->call();
+$args = explode('/', $requestRoute);
+$route = $args[0];
+$params = $args[1];
+
+if (isset($routes[$route])) {
+    $newRoute = new Route($routes[$route]);
+    $newRoute->setParams($params);
+    $newRoute->call();
 } else {
     include __DIR__ . '/404.phtml';
 }
