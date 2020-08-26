@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.21, for Linux (x86_64)
 --
--- Host: 127.0.0.1    Database: school_boards
+-- Host: localhost    Database: school_boards
 -- ------------------------------------------------------
 -- Server version	8.0.21
 
@@ -59,6 +59,7 @@ CREATE TABLE `grades` (
 
 LOCK TABLES `grades` WRITE;
 /*!40000 ALTER TABLE `grades` DISABLE KEYS */;
+INSERT INTO `grades` VALUES (1,6),(1,7),(1,8),(2,5),(2,8),(2,9),(3,6),(3,7),(3,8),(3,9),(3,10);
 /*!40000 ALTER TABLE `grades` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -100,4 +101,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-08-26 10:59:29
+-- Dump completed on 2020-08-26 14:33:16

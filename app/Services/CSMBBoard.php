@@ -28,6 +28,6 @@ class CSMBBoard implements Board
 
     public function publish($data)
     {
-
+        //todo ovo ne stigoh :'(
     }
 }
