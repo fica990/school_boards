@@ -2,7 +2,9 @@
   "name": "root/my-app",
   "require": {
     "ext-json": "*",
-    "ext-pdo": "*"
+    "ext-pdo": "*",
+    "ext-http": "*",
+    "ext-simplexml": "*"
   },
   "autoload": {
     "psr-4": {

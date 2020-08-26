@@ -6,24 +6,41 @@ namespace App\Support;
 
 class Validation
 {
-    protected static $errorMessages;
+    const MIN_GRADES_COUNT = 1;
+    const MAX_GRADES_COUNT = 4;
+    protected static $errorMessage;
 
-    public static function checkIfParamsNotEmpty(array $data)
+    public static function checkParam($param)
     {
         $status = true;
 
-        foreach ($data as $fieldName => $item) {
-            if (empty($item)) {
-                $status = false;
-                static::$errorMessages[] = $fieldName . ' is empty';
-            }
+        if (!is_numeric($param)) {
+            $status = false;
+            static::$errorMessage = 'Bad ID';
         }
 
         return $status;
     }
 
-    public static function getErrorMessages()
+    public static function validateGradesCount(array $grades)
     {
-        return static::$errorMessages;
+        $status = true;
+
+        if (count($grades) < self::MIN_GRADES_COUNT) {
+            $status = false;
+            static::$errorMessage = 'Student has no grades';
+        }
+
+        if (count($grades) > self::MAX_GRADES_COUNT) {
+            $status = false;
+            static::$errorMessage = 'Student has more than 4 grades';
+        }
+
+        return $status;
+    }
+
+    public static function getErrorMessage()
+    {
+        return static::$errorMessage;
     }
 }
