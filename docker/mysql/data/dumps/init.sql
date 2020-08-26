@@ -1,10 +1,8 @@
-CREATE DATABASE IF NOT EXISTS test;
-
--- MySQL dump 10.13  Distrib 8.0.19, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.21, for Linux (x86_64)
 --
--- Host: localhost    Database: test
+-- Host: 127.0.0.1    Database: school_boards
 -- ------------------------------------------------------
--- Server version	8.0.19
+-- Server version	8.0.21
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -18,62 +16,79 @@ CREATE DATABASE IF NOT EXISTS test;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `comments`
+-- Table structure for table `boards`
 --
 
-DROP TABLE IF EXISTS `comments`;
+DROP TABLE IF EXISTS `boards`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `comments` (
+CREATE TABLE `boards` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `text` varchar(255) NOT NULL,
-  `status` tinyint NOT NULL DEFAULT '0',
-  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `name` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `boards`
+--
+
+LOCK TABLES `boards` WRITE;
+/*!40000 ALTER TABLE `boards` DISABLE KEYS */;
+INSERT INTO `boards` VALUES (1,'CSM'),(2,'CSMB');
+/*!40000 ALTER TABLE `boards` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `grades`
+--
+
+DROP TABLE IF EXISTS `grades`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `grades` (
+  `student_id` int NOT NULL,
+  `grade` int NOT NULL,
+  PRIMARY KEY (`student_id`,`grade`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `grades`
+--
+
+LOCK TABLES `grades` WRITE;
+/*!40000 ALTER TABLE `grades` DISABLE KEYS */;
+/*!40000 ALTER TABLE `grades` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `students`
+--
+
+DROP TABLE IF EXISTS `students`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `students` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `board_id` int NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `comments`
+-- Dumping data for table `students`
 --
 
-LOCK TABLES `comments` WRITE;
-/*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES (1,'Title','mail@mail.com','text',0,'2020-03-27 19:14:02'),(2,'Title 2','mail@mail.com','text',1,'2020-03-27 19:14:03'),(3,'Title 3','mail@mail.com','text',1,'2020-03-27 19:14:06'),(4,'Title 4','mail@mail.com','text',1,'2020-03-27 19:14:07'),(5,'Title 5','filipmitrovic90@gmail.com','dfgdfg',0,'2020-03-27 19:21:02'),(6,'Title 6','filipmitrovic90@gmail.com','asdasdasd',0,'2020-03-27 19:23:48'),(7,'Title 7','mail@mail.com','asdasd',1,'2020-03-27 19:49:30'),(8,'Title 8','mail@mail.com','asdasd',0,'2020-03-27 19:49:57'),(9,'Title 9','filipmitrovic90@gmail.com','asdasdasd',0,'2020-03-27 19:50:21'),(10,'Title 10','filipmitrovic90@gmail.com','asdasdasd',1,'2020-03-27 19:52:15');
-/*!40000 ALTER TABLE `comments` ENABLE KEYS */;
+LOCK TABLES `students` WRITE;
+/*!40000 ALTER TABLE `students` DISABLE KEYS */;
+INSERT INTO `students` VALUES (1,'Student 1',1),(2,'Student 2',1),(3,'Student 3',2),(4,'Student 4',1),(5,'Student 5',2);
+/*!40000 ALTER TABLE `students` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `products`
---
-
-DROP TABLE IF EXISTS `products`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `products` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(100) NOT NULL,
-  `image_path` varchar(255) NOT NULL,
-  `image_name` varchar(100) NOT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `products`
---
-
-LOCK TABLES `products` WRITE;
-/*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,'title','/assets/img/','product_1.jpg','desc text desc text desc text 1'),(2,'title_2','/assets/img/','product_2.jpg','desc text desc text desc text 2'),(3,'title_3','/assets/img/','product_3.jpg','desc text desc text desc text 3'),(4,'title_4','/assets/img/','product_4.jpg','desc text desc text desc text 4'),(5,'title_5','/assets/img/','product_5.jpg','desc text desc text desc text 5'),(6,'title_6','/assets/img/','product_6.jpg','desc text desc text desc text 6'),(7,'title_7','/assets/img/','product_7.jpg','desc text desc text desc text 7'),(8,'title_8','/assets/img/','product_8.jpg','desc text desc text desc text 8'),(9,'title_9','/assets/img/','product_9.jpg','desc text desc text desc text 9');
-/*!40000 ALTER TABLE `products` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Dumping routines for database 'test'
+-- Dumping routines for database 'school_boards'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -85,4 +100,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-03-27 22:43:02
+-- Dump completed on 2020-08-26 10:59:29

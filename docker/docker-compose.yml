@@ -17,7 +17,7 @@ services:
         build: ./mysql
         container_name: my_mysql
         ports:
-            - "3306:3306"
+            - "3307:3306"
         volumes:
             - ./mysql/data/dumps/init.sql:/docker-entrypoint-initdb.d/init.sql
             - ./mysql/data/dumps:/dumps/
