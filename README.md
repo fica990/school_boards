@@ -26,12 +26,3 @@ SSH to docker: (optional)
 Navigate to **/var/www/my-app**
 
 `cd ../my-app`
-
----
-
-Home page is **my-app.com/products**
-
-Admin panel is **my-app.com/products**
-
-
-
